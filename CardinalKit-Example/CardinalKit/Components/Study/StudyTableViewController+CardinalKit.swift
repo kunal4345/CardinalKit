@@ -74,10 +74,28 @@ extension StudyTableViewController {
                     // TODO: better configurable feedback via something like:
                     // https://github.com/Daltron/NotificationBanner
                     print("Document successfully written!")
+                    
+                    self.CKGetJSON()
                 }
             }
             
         }
+    }
+    //Kshah Pull data from firestore
+    func CKGetJSON()  {
+            let db = Firestore.firestore()
+        let docRef = db.collection("studies").document("com.Kunal.CardinalKit").collection("users").document("4gw6RznDx4TGZAbEqE0emv497nA3").collection("surveys")
+
+            docRef.getDocuments { (querySnapshot, err) in
+                 if let err = err {
+                           print("Error getting documents: \(err)")
+                       } else {
+                           for document in querySnapshot!.documents {
+                               print("\(document.documentID) => \(document.data())")
+                           }
+                       }
+            }
+                
     }
     
     /**

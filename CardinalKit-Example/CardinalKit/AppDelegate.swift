@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import ResearchKit
+import CareKit //hjsong
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
